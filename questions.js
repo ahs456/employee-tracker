@@ -8,7 +8,7 @@ const MainQuestions =  [
             { value: 'view_roles', name: "view roles"},
             { value: 'view_employees', name: "view employees"},
             { value: 'add_department', name: "add department"},
-            { value: 'add_roles', name: "add role"},
+            { value: 'add_role', name: "add role"},
             { value: 'add_employee', name: "add employee"},
             { value: 'update_role', name: "update employee role"},
         ],
