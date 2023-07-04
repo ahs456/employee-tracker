@@ -23,7 +23,9 @@ class EmployeeDatabase extends Database {
                     role.id, 
                     role.title, 
                     role.salary, 
-                    department.name as department_name FROM role INNER JOIN Department ON role.department_id = Department.id`, (err, results) => {
+                    department.name as department_name 
+                    FROM role INNER JOIN Department ON role.department_id = Department.id`, 
+                    (err, results) => {
                 if (err) {
                     reject(err);
                 }
@@ -37,11 +39,10 @@ class EmployeeDatabase extends Database {
             this.db.query(
                 `SELECT
                 employee.id,
-                ,
+                CONCAT (employee.first_name, ' ', employee.last_name) as name,
                 role.title as role_title,
                 role salart as role_salary,
                 department.name as department_name,
-INNER JOIN employee ON manager.first_name ON manager.last_name = manager.first_name AND manager.last_name
                 
                 FROM employee
                 INNER JOIN role ON employee.role_id = role.id
