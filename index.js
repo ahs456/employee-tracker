@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const { MainQuestions, AddDepartmentQuestion, AddEmployeeQuestion, AddRoleQuestion, UpdateEmployeeRoleQuestion} = require('./questions.js');
 const EmployeeDatabase  = require('./db/EmployeeDatabase.js');
+const { run } = require('node:test');
 
 const db = new EmployeeDatabase({
     host: 'localhost',
@@ -59,5 +60,37 @@ const view_employees = () => {
     db.getEmployees().then((results) => {
         console.table(results);
         runFirstQuestions();
+    });
+}
+
+const add_department = () => {
+    inquirer
+    .prompt(AddDepartmentQuestion)
+    .then((response) => {
+        db.addDepartment(reponse).then((results) => {
+            console.log('/n', results, '/n');
+            runFirstQuestions();
+        });
+    })
+}
+
+const add_role = () => {
+    db.getDepartments().then((results) => {
+        const departmentQuestion = AddRoleQuestion[2];
+        results.forEach((department) => {
+            departmentQuestion.choices.push({
+                value: department.id,
+                name: department.name
+            });
+        });
+
+        inquirer
+        .prompt(AddRoleQuestion)
+        .then((response) => {
+            db.addRole(response).then((results) => {
+                console.log('/n', results, '/n');
+                runFirstQuestions();
+            });
+        })
     });
 }
