@@ -7,8 +7,8 @@ class Database {
     }
 
     validate () {
-        const {host, user, password, database} = this.options;
-        if (!host || !user || !password || !database)
+        const {host, user,  database} = this.options;
+        if (!host || !user  || !database)
         throw new Error('Invalid database');
         return;
     }
