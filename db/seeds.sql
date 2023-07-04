@@ -11,7 +11,7 @@ INSERT INTO role (id, title, salary, department_id) VALUES (5, 'Customer Service
 INSERT INTO role (id, title, salary, department_id) VALUES (6, 'Vice President', 69000, 4);
 INSERT INTO role (id, title, salary, department_id) VALUES (7, 'Counseller', 41000, 2);
 
-INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (1, 'Garfeild', 'Cat', 1, 7);
+INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (1, 'Garfield', 'Cat', 1, 7);
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (2, 'Paris', 'Hilton', 5, 2);
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (3, 'John', 'Cena', 2, 7);
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (4, 'Sarah', 'Jane', 7, 3);
