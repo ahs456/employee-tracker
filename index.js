@@ -94,3 +94,41 @@ const add_role = () => {
         })
     });
 }
+
+const add_employee = () => {
+    db.getRoles().then((results) => {
+        const roleQuestion = AddEmployeeQuestion[2];
+        results.forEach((role) => {
+            const role_summary = `${role.title} (${role.department_name}: ${role.salary})`;
+            roleQuestion.choices.push({
+                value: role.id,
+                name: role_summary
+            });
+        });
+
+        db.getEmployees().then((results) => {
+            const managerQuestion = AddEmployeeQuestions[3];
+            results.forEach((employee) => {
+                managerQuestion.choices.push({
+                    value: employee.id,
+                    name: employee.name
+                });
+            });
+
+            managerQuestion.choices.push({
+                value: null,
+                name: 'None'
+            });
+
+            inquirer
+                .prompt(AddEmployeeQuestion)
+                .then((response) => {
+                    db.addEmployee(reponse).then((results) => {
+                        console.log('/n', results, '/n');
+                        runFirstQuestions();
+                    });
+                })
+        });
+    });
+}
+
