@@ -24,7 +24,8 @@ class EmployeeDatabase extends Database {
                     role.title, 
                     role.salary, 
                     department.name as department_name 
-                    FROM role INNER JOIN Department ON role.department_id = Department.id`, 
+                    FROM role 
+                    INNER JOIN Department ON role.department_id = Department.id`, 
                     (err, results) => {
                 if (err) {
                     reject(err);
@@ -43,7 +44,6 @@ class EmployeeDatabase extends Database {
                 role.title as role_title,
                 role salart as role_salary,
                 department.name as department_name,
-                
                 FROM employee
                 INNER JOIN role ON employee.role_id = role.id
                 INNER JOIN department ON role.department_id = department.id

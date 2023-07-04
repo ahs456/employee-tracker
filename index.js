@@ -68,7 +68,7 @@ const add_department = () => {
     .prompt(AddDepartmentQuestion)
     .then((response) => {
         db.addDepartment(response).then((results) => {
-            console.log('/n', results, '/n');
+            console.log(results);
             runFirstQuestions();
         });
     })
@@ -88,7 +88,7 @@ const add_role = () => {
         .prompt(AddRoleQuestion)
         .then((response) => {
             db.addRole(response).then((results) => {
-                console.log('/n', results, '/n');
+                console.log(results);
                 runFirstQuestions();
             });
         })
@@ -124,7 +124,7 @@ const add_employee = () => {
                 .prompt(AddEmployeeQuestion)
                 .then((response) => {
                     db.addEmployee(response).then((results) => {
-                        console.log('/n', results, '/n');
+                        console.log(results);
                         runFirstQuestions();
                     });
                 })
@@ -155,7 +155,7 @@ const update_role = () => {
                 .prompt(UpdateEmployeeRoleQuestion)
                 .then((response) => {
                     db.updateEmployeeRole(response).then((results) => {
-                        console.log('/n', results, '/n');
+                        console.log(results);
                         runFirstQuestions();
                     });
                 })
