@@ -11,11 +11,11 @@ const db = new EmployeeDatabase({
 
 db.connect();
 
-const doFirstQuestions = () => {
+const runFirstQuestions = () => {
     inquirer
     .prompt(MainQuestions)
-    .then((respone) => {
-        switch (respone.option) {
+    .then((response) => {
+        switch (response.option) {
             case 'view_departments':
                 view_departments();
                 break;
@@ -39,4 +39,25 @@ const doFirstQuestions = () => {
                 break;
         }
     })
+}
+
+const view_departments = () => {
+    db.getDepartments().then((results) => {
+        console.table(results);
+        runFirstQuestions();
+    });
+}
+
+const view_roles = () => {
+    db.getRoles().then((results) => {
+        console.table(results);
+        runFirstQuestions();
+    });
+}
+
+const view_employees = () => {
+    db.getEmployees().then((results) => {
+        console.table(results);
+        runFirstQuestions();
+    });
 }
