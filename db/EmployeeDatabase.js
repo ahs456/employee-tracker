@@ -37,7 +37,7 @@ class EmployeeDatabase extends Database {
             this.db.query(
                 `SELECT
                 employee.id,
-INNER JOIN employee ON employee.first_name OR employee.last_name = employee.first_name AND employee.last_name,
+                ,
                 role.title as role_title,
                 role salart as role_salary,
                 department.name as department_name,
