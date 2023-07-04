@@ -47,3 +47,40 @@ const AddEmployeeQuestion = [
         choices: [],
     },
 ]
+
+const AddRoleQuestion = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'Enter title of role:'
+    },
+    {
+        type: 'number',
+        name: 'salary',
+        message: 'Enter salary of role:'
+    },
+    {
+        type: 'list',
+        name: 'department_id',
+        message: 'Choose department for role:',
+        choices: [],
+    },
+]
+
+const UpdateEmployeeRoleQuestion = [
+    {
+        type: 'list',
+        name: 'employee_id',
+        message: 'Choose which employee to update:',
+        choices: [],
+    },
+    {
+        type: 'list',
+        name: 'role_id',
+        message: 'Choose employee role:',
+        choices: [],
+    },
+]
+
+
+module.exports = {MainQuestions, AddDepartmentQuestion, AddEmployeeQuestion, AddRoleQuestion, UpdateEmployeeRoleQuestion};
