@@ -67,7 +67,7 @@ const add_department = () => {
     inquirer
     .prompt(AddDepartmentQuestion)
     .then((response) => {
-        db.addDepartment(reponse).then((results) => {
+        db.addDepartment(response).then((results) => {
             console.log('/n', results, '/n');
             runFirstQuestions();
         });
@@ -123,7 +123,7 @@ const add_employee = () => {
             inquirer
                 .prompt(AddEmployeeQuestion)
                 .then((response) => {
-                    db.addEmployee(reponse).then((results) => {
+                    db.addEmployee(response).then((results) => {
                         console.log('/n', results, '/n');
                         runFirstQuestions();
                     });
@@ -132,3 +132,35 @@ const add_employee = () => {
     });
 }
 
+const update_role = () => {
+    db.getEmployees().then((results) => {
+        const employeeQuestion = UpdateEmployeeRoleQuestion[0];
+        results.forEach((employee) => {
+            employeeQuestion.choices.push({
+                value: employee.id,
+                name: employee.name
+            });
+        });
+
+        db.getRoles().then((results) => {
+            const roleQuestion = UpdateEmployeeRoleQuestion[1];
+            results.forEach((role) => {
+                roleQuestion.choices.push({
+                    value: role.id,
+                    name: role.title
+                });
+            });
+
+            inquirer
+                .prompt(UpdateEmployeeRoleQuestion)
+                .then((response) => {
+                    db.updateEmployeeRole(response).then((results) => {
+                        console.log('/n', results, '/n');
+                        runFirstQuestions();
+                    });
+                })
+        });
+    });
+}
+
+runFirstQuestions();
