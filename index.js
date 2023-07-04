@@ -4,7 +4,7 @@ const EmployeeDatabase  = require('./db/EmployeeDatabase.js');
 const { run } = require('node:test');
 
 const db = new EmployeeDatabase({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
     password: '',
     database: 'employee_db'
