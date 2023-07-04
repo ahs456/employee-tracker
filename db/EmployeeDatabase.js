@@ -102,5 +102,16 @@ INNER JOIN employee ON manager.first_name ON manager.last_name = manager.first_n
         });
     }
 
-    
+    updateEmployeeRole(employee) {
+        return new Promise((resolve, reject) => {
+            this.db.query('UPDATE employee SET role_id=? WHERE id=?', employee.role_id, employee.employee_id, (err, result) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(results);
+            });
+        });
+    }
 }
+
+module.exports = EmployeeDatabase;
