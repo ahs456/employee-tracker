@@ -38,16 +38,17 @@ class EmployeeDatabase extends Database {
     getEmployees() {
         return new Promise((resolve, reject) => {
             this.db.query(
-                `SELECT
-                employee.id,
-                CONCAT (employee.first_name, ' ', employee.last_name) as name,
-                role.title as role_title,
-                role salart as role_salary,
-                department.name as department_name,
-                FROM employee
-                INNER JOIN role ON employee.role_id = role.id
-                INNER JOIN department ON role.department_id = department.id
-                LEFT JOIN employee as manager ON employee.manager_id = manager.id`,
+                `SELECT employee.id, 
+                employee.first_name, 
+                employee.last_name, 
+                role.title, 
+                department.name AS department, 
+                role.salary, 
+                CONCAT(manager.first_name, ' ', manager.last_name) AS manager 
+                FROM employee 
+                LEFT JOIN role on employee.role_id = role.id 
+                LEFT JOIN department on role.department_id = department.id 
+                LEFT JOIN employee manager on manager.id = employee.manager_id`,
                 (err, result) => {
                     if (err) {
                         reject(err);
