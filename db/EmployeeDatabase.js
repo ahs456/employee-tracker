@@ -106,11 +106,11 @@ class EmployeeDatabase extends Database {
 
     updateEmployeeRole(employee) {
         return new Promise((resolve, reject) => {
-            this.db.query('UPDATE employee SET role_id=? WHERE id=?', employee.role_id, employee.employee_id, (err, result) => {
-            if (err) {
-                reject(err);
-            }
-            resolve(results);
+            this.db.query('UPDATE employee SET role_id=? WHERE id=?', [employee.role_id, employee.employee_id], (err, result) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(result);
             });
         });
     }

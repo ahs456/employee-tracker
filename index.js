@@ -35,7 +35,7 @@ const runFirstQuestions = () => {
             case 'add_employee':
                 add_employee();
                 break;
-            case 'uopdate_role':
+            case 'update_role':
                 update_role();
                 break;
         }
@@ -107,7 +107,7 @@ const add_employee = () => {
         });
 
         db.getEmployees().then((results) => {
-            const managerQuestion = AddEmployeeQuestions[3];
+            const managerQuestion = AddEmployeeQuestion[3];
             results.forEach((employee) => {
                 managerQuestion.choices.push({
                     value: employee.id,
